@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>动作片 - 视频列表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 10px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+        }
+        
+        .header {
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+        
+        .info {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* PC端表格样式 */
+        .table-container {
+            overflow-x: auto;
+            display: block;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        th {
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 16px;
+            white-space: nowrap;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: middle;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .video-name {
+            color: #333;
+            font-weight: 500;
+            max-width: 300px;
+            word-wrap: break-word;
+        }
+        
+        .qrcode {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .upload-time {
+            color: #666;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        /* 移动端卡片样式 */
+        .mobile-cards {
+            display: none;
+            gap: 15px;
+        }
+        
+        .card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            word-wrap: break-word;
+        }
+        
+        .card-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .card-qrcode {
+            flex-shrink: 0;
+        }
+        
+        .card-qrcode img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .card-time {
+            color: #666;
+            font-size: 13px;
+            flex: 1;
+        }
+        
+        .time-label {
+            display: block;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+        
+        /* 响应式设计：手机端显示卡片 */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            .info {
+                font-size: 12px;
+            }
+            
+            .table-container {
+                display: none;
+            }
+            
+            .mobile-cards {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .card {
+                padding: 12px;
+            }
+            
+            .card-header {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+            
+            .card-content {
+                gap: 10px;
+            }
+            
+            .card-qrcode img {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .card-time {
+                font-size: 12px;
+            }
+            
+            .time-label {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回首页</a>
+        
+        <div class="header">
+            <h1>动作片</h1>
+            <div class="info">
+                生成时间: 2026-01-10 21:41:52 | 
+                共 2 个视频
+            </div>
+        </div>
+        
+        <!-- PC端表格 -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>视频名称</th>
+                        
+                        <th>微信扫码保存</th>
+                        <th>上传时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td class="video-name">手遮天 (2026).mp4</td>
+                        
+                        <td>
+                            <img src="../qr_codes/手遮天_2026_.mp4.png" 
+                                 alt="手遮天 (2026).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 20:44:29</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">忍者刺客49 Seek (2025).mp4</td>
+                        
+                        <td>
+                            <img src="../qr_codes/忍者刺客49_Seek_2025_.mp4.png" 
+                                 alt="忍者刺客49 Seek (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 20:37:21</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- 移动端卡片 -->
+        <div class="mobile-cards">
+            
+            <div class="card">
+                <div class="card-header">手遮天 (2026).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="../qr_codes/手遮天_2026_.mp4.png" 
+                             alt="手遮天 (2026).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 20:44:29
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">忍者刺客49 Seek (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="../qr_codes/忍者刺客49_Seek_2025_.mp4.png" 
+                             alt="忍者刺客49 Seek (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 20:37:21
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

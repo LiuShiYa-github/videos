@@ -3,301 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>视频分享列表</title>
+    <title>视频分享 - 首页</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 10px;
             min-height: 100vh;
         }
+        
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             background: white;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             padding: 20px;
         }
-        h1 { text-align: center; color: #333; margin-bottom: 10px; font-size: 24px; }
-        .info { text-align: center; color: #666; margin-bottom: 20px; font-size: 13px; }
-        .table-container { overflow-x: auto; display: block; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        thead { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        th { color: white; padding: 15px; text-align: left; font-weight: bold; font-size: 16px; white-space: nowrap; }
-        td { padding: 12px 15px; border-bottom: 1px solid #e0e0e0; vertical-align: middle; }
-        tr:hover { background-color: #f5f5f5; }
-        .video-name { color: #333; font-weight: 500; max-width: 300px; word-wrap: break-word; }
-        .qrcode { width: 120px; height: 120px; object-fit: contain; display: block; }
-        .upload-time { color: #666; font-size: 14px; white-space: nowrap; }
-        .mobile-cards { display: none; gap: 15px; }
-        .card { background: #f8f9fa; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .card-header { font-size: 16px; font-weight: 600; color: #333; margin-bottom: 12px; word-wrap: break-word; }
-        .card-content { display: flex; align-items: center; gap: 15px; }
-        .card-qrcode { flex-shrink: 0; }
-        .card-qrcode img { width: 100px; height: 100px; object-fit: contain; display: block; }
-        .card-time { color: #666; font-size: 13px; flex: 1; }
-        .time-label { display: block; color: #999; font-size: 12px; margin-bottom: 4px; }
-        .empty { text-align: center; padding: 40px; color: #999; }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .info {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .category-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            padding: 20px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .category-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .category-count {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .total-info {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+        }
+        
+        .total-count {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .empty-section {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 16px;
+        }
+        
         @media (max-width: 768px) {
-            body { padding: 5px; }
-            .container { padding: 15px; }
-            h1 { font-size: 20px; }
-            .info { font-size: 12px; }
-            .table-container { display: none; }
-            .mobile-cards { display: flex; flex-direction: column; }
-            .card { padding: 12px; }
-            .card-header { font-size: 15px; margin-bottom: 10px; }
-            .card-content { gap: 10px; }
-            .card-qrcode img { width: 80px; height: 80px; }
-            .card-time { font-size: 12px; }
-            .time-label { font-size: 11px; }
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            .info {
+                font-size: 12px;
+            }
+            
+            .section-title {
+                font-size: 18px;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-name {
+                font-size: 18px;
+            }
+            
+            .category-count {
+                font-size: 13px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎬 视频分享列表</h1>
+        <h1>🎬 视频分享</h1>
         <div class="info">
-            生成时间: 2026-01-10 21:37:54 | 共分享 11 个视频
+            生成时间: 2026-01-10 21:41:52 | 
+            共 11 个视频
         </div>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>视频名称</th>
-                        <th>微信扫码保存</th>
-                        <th>上传时间</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <td class="video-name">第四次爱情革命</td>
-                        <td>
-                            <img src="qr_codes/第四次爱情革命.png" alt="第四次爱情革命" class="qrcode" loading="lazy">
-                        </td>
-                        <td class="upload-time">2026-01-10 21:26:05</td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="video-name">吞噬太阳的女子</td>
-                        <td>
-                            <img src="qr_codes/吞噬太阳的女子.png" alt="吞噬太阳的女子" class="qrcode" loading="lazy">
-                        </td>
-                        <td class="upload-time">2026-01-10 21:07:48</td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="video-name">因为没有来生</td>
-                        <td>
-                            <img src="qr_codes/因为没有来生.png" alt="因为没有来生" class="qrcode" loading="lazy">
-                        </td>
-                        <td class="upload-time">2026-01-10 21:06:52</td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="video-name">UDT：我们小区特工队</td>
-                        <td>
-                            <img src="qr_codes/UDT_我们小区特工队.png" alt="UDT：我们小区特工队" class="qrcode" loading="lazy">
-                        </td>
-                        <td class="upload-time">2026-01-10 21:03:32</td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="video-name">雷云暴雨</td>
-                        <td>
-                            <img src="qr_codes/雷云暴雨.png" alt="雷云暴雨" class="qrcode" loading="lazy">
-                        </td>
-                        <td class="upload-time">2026-01-10 21:00:44</td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="video-name">月亮在江边流淌</td>
-                        <td>
-                            <img src="qr_codes/月亮在江边流淌.png" alt="月亮在江边流淌" class="qrcode" loading="lazy">
-                        </td>
-                        <td class="upload-time">2026-01-10 20:51:03</td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="video-name">花都情缘</td>
-                        <td>
-                            <img src="qr_codes/花都情缘.png" alt="花都情缘" class="qrcode" loading="lazy">
-                        </td>
-                        <td class="upload-time">2026-01-10 20:50:07</td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="video-name">冷血狐狸 Stone Cold Fox (2025).mp4</td>
-                        <td>
-                            <img src="qr_codes/冷血狐狸_Stone_Cold_Fox_2025_.mp4.png" alt="冷血狐狸 Stone Cold Fox (2025).mp4" class="qrcode" loading="lazy">
-                        </td>
-                        <td class="upload-time">2026-01-10 20:45:44</td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="video-name">手遮天 (2026).mp4</td>
-                        <td>
-                            <img src="qr_codes/手遮天_2026_.mp4.png" alt="手遮天 (2026).mp4" class="qrcode" loading="lazy">
-                        </td>
-                        <td class="upload-time">2026-01-10 20:44:29</td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="video-name">特殊检测 (2025).mp4</td>
-                        <td>
-                            <img src="qr_codes/特殊检测_2025_.mp4.png" alt="特殊检测 (2025).mp4" class="qrcode" loading="lazy">
-                        </td>
-                        <td class="upload-time">2026-01-10 20:38:36</td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="video-name">忍者刺客49 Seek (2025).mp4</td>
-                        <td>
-                            <img src="qr_codes/忍者刺客49_Seek_2025_.mp4.png" alt="忍者刺客49 Seek (2025).mp4" class="qrcode" loading="lazy">
-                        </td>
-                        <td class="upload-time">2026-01-10 20:37:21</td>
-                    </tr>
-                    
-                </tbody>
-            </table>
+        
+        <!-- 电影分类 -->
+        
+        <div class="section">
+            <h2 class="section-title">🎥 电影</h2>
+            <div class="category-grid">
+                
+                <a href="action_film.html" class="category-card">
+                    <div class="category-name">动作片</div>
+                    <div class="category-count">2 个视频</div>
+                </a>
+                
+                <a href="romance_film.html" class="category-card">
+                    <div class="category-name">爱情片</div>
+                    <div class="category-count">1 个视频</div>
+                </a>
+                
+                <a href="comedy_film.html" class="category-card">
+                    <div class="category-name">喜剧片</div>
+                    <div class="category-count">1 个视频</div>
+                </a>
+                
+            </div>
         </div>
-        <div class="mobile-cards">
-            
-            <div class="card">
-                <div class="card-header">第四次爱情革命</div>
-                <div class="card-content">
-                    <div class="card-qrcode">
-                        <img src="qr_codes/第四次爱情革命.png" alt="第四次爱情革命" loading="lazy">
-                    </div>
-                    <div class="card-time">
-                        <span class="time-label">上传时间</span>2026-01-10 21:26:05
-                    </div>
-                </div>
+        
+        
+        <!-- 电视剧分类 -->
+        
+        <div class="section">
+            <h2 class="section-title">📺 电视剧</h2>
+            <div class="category-grid">
+                
+                <a href="hanguo.html" class="category-card">
+                    <div class="category-name">韩国剧</div>
+                    <div class="category-count">7 个视频</div>
+                </a>
+                
             </div>
-            
-            <div class="card">
-                <div class="card-header">吞噬太阳的女子</div>
-                <div class="card-content">
-                    <div class="card-qrcode">
-                        <img src="qr_codes/吞噬太阳的女子.png" alt="吞噬太阳的女子" loading="lazy">
-                    </div>
-                    <div class="card-time">
-                        <span class="time-label">上传时间</span>2026-01-10 21:07:48
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">因为没有来生</div>
-                <div class="card-content">
-                    <div class="card-qrcode">
-                        <img src="qr_codes/因为没有来生.png" alt="因为没有来生" loading="lazy">
-                    </div>
-                    <div class="card-time">
-                        <span class="time-label">上传时间</span>2026-01-10 21:06:52
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">UDT：我们小区特工队</div>
-                <div class="card-content">
-                    <div class="card-qrcode">
-                        <img src="qr_codes/UDT_我们小区特工队.png" alt="UDT：我们小区特工队" loading="lazy">
-                    </div>
-                    <div class="card-time">
-                        <span class="time-label">上传时间</span>2026-01-10 21:03:32
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">雷云暴雨</div>
-                <div class="card-content">
-                    <div class="card-qrcode">
-                        <img src="qr_codes/雷云暴雨.png" alt="雷云暴雨" loading="lazy">
-                    </div>
-                    <div class="card-time">
-                        <span class="time-label">上传时间</span>2026-01-10 21:00:44
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">月亮在江边流淌</div>
-                <div class="card-content">
-                    <div class="card-qrcode">
-                        <img src="qr_codes/月亮在江边流淌.png" alt="月亮在江边流淌" loading="lazy">
-                    </div>
-                    <div class="card-time">
-                        <span class="time-label">上传时间</span>2026-01-10 20:51:03
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">花都情缘</div>
-                <div class="card-content">
-                    <div class="card-qrcode">
-                        <img src="qr_codes/花都情缘.png" alt="花都情缘" loading="lazy">
-                    </div>
-                    <div class="card-time">
-                        <span class="time-label">上传时间</span>2026-01-10 20:50:07
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">冷血狐狸 Stone Cold Fox (2025).mp4</div>
-                <div class="card-content">
-                    <div class="card-qrcode">
-                        <img src="qr_codes/冷血狐狸_Stone_Cold_Fox_2025_.mp4.png" alt="冷血狐狸 Stone Cold Fox (2025).mp4" loading="lazy">
-                    </div>
-                    <div class="card-time">
-                        <span class="time-label">上传时间</span>2026-01-10 20:45:44
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">手遮天 (2026).mp4</div>
-                <div class="card-content">
-                    <div class="card-qrcode">
-                        <img src="qr_codes/手遮天_2026_.mp4.png" alt="手遮天 (2026).mp4" loading="lazy">
-                    </div>
-                    <div class="card-time">
-                        <span class="time-label">上传时间</span>2026-01-10 20:44:29
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">特殊检测 (2025).mp4</div>
-                <div class="card-content">
-                    <div class="card-qrcode">
-                        <img src="qr_codes/特殊检测_2025_.mp4.png" alt="特殊检测 (2025).mp4" loading="lazy">
-                    </div>
-                    <div class="card-time">
-                        <span class="time-label">上传时间</span>2026-01-10 20:38:36
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">忍者刺客49 Seek (2025).mp4</div>
-                <div class="card-content">
-                    <div class="card-qrcode">
-                        <img src="qr_codes/忍者刺客49_Seek_2025_.mp4.png" alt="忍者刺客49 Seek (2025).mp4" loading="lazy">
-                    </div>
-                    <div class="card-time">
-                        <span class="time-label">上传时间</span>2026-01-10 20:37:21
-                    </div>
-                </div>
-            </div>
-            
+        </div>
+        
+        
+        <div class="total-info">
+            <div class="total-count">11</div>
+            <div>总计视频数量</div>
         </div>
     </div>
 </body>
