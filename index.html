@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>视频分享列表</title>
     <style>
         * {
@@ -14,7 +14,7 @@
         body {
             font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
+            padding: 10px;
             min-height: 100vh;
         }
         
@@ -24,25 +24,27 @@
             background: white;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            padding: 30px;
+            padding: 20px;
         }
         
         h1 {
             text-align: center;
             color: #333;
             margin-bottom: 10px;
-            font-size: 32px;
+            font-size: 24px;
         }
         
         .info {
             text-align: center;
             color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
+            margin-bottom: 20px;
+            font-size: 13px;
         }
         
+        /* PC端表格样式 */
         .table-container {
             overflow-x: auto;
+            display: block;
         }
         
         table {
@@ -85,6 +87,7 @@
             width: 120px;
             height: 120px;
             object-fit: contain;
+            display: block;
         }
         
         .upload-time {
@@ -93,10 +96,115 @@
             white-space: nowrap;
         }
         
+        /* 移动端卡片样式 */
+        .mobile-cards {
+            display: none;
+            gap: 15px;
+        }
+        
+        .card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            word-wrap: break-word;
+        }
+        
+        .card-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .card-qrcode {
+            flex-shrink: 0;
+        }
+        
+        .card-qrcode img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .card-time {
+            color: #666;
+            font-size: 13px;
+            flex: 1;
+        }
+        
+        .time-label {
+            display: block;
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        
         .empty {
             text-align: center;
             padding: 40px;
             color: #999;
+        }
+        
+        /* 响应式设计：手机端显示卡片 */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            .info {
+                font-size: 12px;
+            }
+            
+            .table-container {
+                display: none;
+            }
+            
+            .mobile-cards {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .card {
+                padding: 12px;
+            }
+            
+            .card-header {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+            
+            .card-content {
+                gap: 10px;
+            }
+            
+            .card-qrcode img {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .card-time {
+                font-size: 12px;
+            }
+            
+            .time-label {
+                font-size: 11px;
+            }
         }
     </style>
 </head>
@@ -104,10 +212,11 @@
     <div class="container">
         <h1>🎬 视频分享列表</h1>
         <div class="info">
-            生成时间: 2026-01-10 14:14:04 | 
-            共分享 25 个视频
+            生成时间: 2026-01-10 14:21:40 | 
+            共分享 28 个视频
         </div>
         
+        <!-- PC端表格 -->
         <div class="table-container">
             <table>
                 <thead>
@@ -118,6 +227,39 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
+                    <tr>
+                        <td class="video-name">狙击手：激战.mp4</td>
+                        <td>
+                            <img src="qr_codes/狙击手_激战.mp4.png" 
+                                 alt="狙击手：激战.mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 14:21:03</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">驱魔龙族马小玲 驅魔龍族馬小玲粤语.mp4</td>
+                        <td>
+                            <img src="qr_codes/驱魔龙族马小玲_驅魔龍族馬小玲粤语.mp4.png" 
+                                 alt="驱魔龙族马小玲 驅魔龍族馬小玲粤语.mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 14:20:02</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">驱魔龙族马小玲 驅魔龍族馬小玲 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/驱魔龙族马小玲_驅魔龍族馬小玲_2025_.mp4.png" 
+                                 alt="驱魔龙族马小玲 驅魔龍族馬小玲 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 14:19:02</td>
+                    </tr>
                     
                     <tr>
                         <td class="video-name">刺杀小说家2 (2025).mp4</td>
@@ -396,6 +538,431 @@
                     
                 </tbody>
             </table>
+        </div>
+        
+        <!-- 移动端卡片 -->
+        <div class="mobile-cards">
+            
+            <div class="card">
+                <div class="card-header">狙击手：激战.mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/狙击手_激战.mp4.png" 
+                             alt="狙击手：激战.mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 14:21:03
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">驱魔龙族马小玲 驅魔龍族馬小玲粤语.mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/驱魔龙族马小玲_驅魔龍族馬小玲粤语.mp4.png" 
+                             alt="驱魔龙族马小玲 驅魔龍族馬小玲粤语.mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 14:20:02
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">驱魔龙族马小玲 驅魔龍族馬小玲 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/驱魔龙族马小玲_驅魔龍族馬小玲_2025_.mp4.png" 
+                             alt="驱魔龙族马小玲 驅魔龍族馬小玲 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 14:19:02
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">刺杀小说家2 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/刺杀小说家2_2025_.mp4.png" 
+                             alt="刺杀小说家2 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:45:49
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">青檀 (2024).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/青檀_2024_.mp4.png" 
+                             alt="青檀 (2024).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:44:48
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">加沙往事 Once Upon a Time in Gaza (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/加沙往事_Once_Upon_a_Time_in_Gaza_2025_.mp4.png" 
+                             alt="加沙往事 Once Upon a Time in Gaza (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:43:48
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">最后的快枪手 The Last Gunfight (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/最后的快枪手_The_Last_Gunfight_2025_.mp4.png" 
+                             alt="最后的快枪手 The Last Gunfight (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:42:48
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">火中金 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/火中金_2025_.mp4.png" 
+                             alt="火中金 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:41:48
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">清算 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/清算_2025_.mp4.png" 
+                             alt="清算 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:40:38
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">铁拳硬汉 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/铁拳硬汉_2025_.mp4.png" 
+                             alt="铁拳硬汉 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:39:37
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">雷域尖兵.mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/雷域尖兵.mp4.png" 
+                             alt="雷域尖兵.mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:38:27
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">复仇者联盟3：无限战争国语.mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/复仇者联盟3_无限战争国语.mp4.png" 
+                             alt="复仇者联盟3：无限战争国语.mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:37:27
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">复仇者联盟3.Avengers.Infinity.War.2018.mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/复仇者联盟3.Avengers.Infinity.War.2018.mp4.png" 
+                             alt="复仇者联盟3.Avengers.Infinity.War.2018.mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:36:26
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">无情混蛋 Ruthless Bastards (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/无情混蛋_Ruthless_Bastards_2025_.mp4.png" 
+                             alt="无情混蛋 Ruthless Bastards (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:35:26
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">狄仁杰之彼岸奇花 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/狄仁杰之彼岸奇花_2025_.mp4.png" 
+                             alt="狄仁杰之彼岸奇花 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:34:26
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">怪兽岛 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/怪兽岛_2025_.mp4.png" 
+                             alt="怪兽岛 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:33:25
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">逆途 Marco (2024).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/逆途_Marco_2024_.mp4.png" 
+                             alt="逆途 Marco (2024).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:32:25
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">永生战士2 Sisu Road to Revenge (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/永生战士2_Sisu_Road_to_Revenge_2025_.mp4.png" 
+                             alt="永生战士2 Sisu Road to Revenge (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:31:25
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">拱卒 (2024).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/拱卒_2024_.mp4.png" 
+                             alt="拱卒 (2024).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:30:25
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">九龙挎刀去白马 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/九龙挎刀去白马_2025_.mp4.png" 
+                             alt="九龙挎刀去白马 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:29:22
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">惊天魔盗团3.mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/惊天魔盗团3.mp4.png" 
+                             alt="惊天魔盗团3.mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:28:22
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">巨洪 대홍수 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/巨洪_2025_.mp4.png" 
+                             alt="巨洪 대홍수 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:27:21
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">血战到底 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/血战到底_2025_.mp4.png" 
+                             alt="血战到底 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:24:19
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">角头：斗阵欸 角頭：鬥陣欸 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/角头_斗阵欸_角頭_鬥陣欸_2025_.mp4.png" 
+                             alt="角头：斗阵欸 角頭：鬥陣欸 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:23:19
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">铁血战士：荒原 Predator Wastelands (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/铁血战士_荒原_Predator_Wastelands_2025_.mp4.png" 
+                             alt="铁血战士：荒原 Predator Wastelands (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:22:19
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">阿凡达：火与烬 Avatar Fire and Ash (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/阿凡达_火与烬_Avatar_Fire_and_Ash_2025_.mp4.png" 
+                             alt="阿凡达：火与烬 Avatar Fire and Ash (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:21:18
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">雷霆营救 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/雷霆营救_2025_.mp4.png" 
+                             alt="雷霆营救 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:20:17
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">无归客 (2025).mp4</div>
+                <div class="card-content">
+                    <div class="card-qrcode">
+                        <img src="qr_codes/无归客_2025_.mp4.png" 
+                             alt="无归客 (2025).mp4" 
+                             loading="lazy">
+                    </div>
+                    <div class="card-time">
+                        <span class="time-label">上传时间</span>
+                        2026-01-10 13:19:17
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 </body>
