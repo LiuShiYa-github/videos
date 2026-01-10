@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频分享列表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        .info {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        th {
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 16px;
+            white-space: nowrap;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: middle;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .video-name {
+            color: #333;
+            font-weight: 500;
+            max-width: 300px;
+            word-wrap: break-word;
+        }
+        
+        .qrcode {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+        }
+        
+        .upload-time {
+            color: #666;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 视频分享列表</h1>
+        <div class="info">
+            生成时间: 2026-01-10 14:08:36 | 
+            共分享 25 个视频
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>视频名称</th>
+                        <th>微信扫码保存</th>
+                        <th>上传时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td class="video-name">刺杀小说家2 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/刺杀小说家2_2025_.mp4.png" 
+                                 alt="刺杀小说家2 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:45:49</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">青檀 (2024).mp4</td>
+                        <td>
+                            <img src="qr_codes/青檀_2024_.mp4.png" 
+                                 alt="青檀 (2024).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:44:48</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">加沙往事 Once Upon a Time in Gaza (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/加沙往事_Once_Upon_a_Time_in_Gaza_2025_.mp4.png" 
+                                 alt="加沙往事 Once Upon a Time in Gaza (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:43:48</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">最后的快枪手 The Last Gunfight (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/最后的快枪手_The_Last_Gunfight_2025_.mp4.png" 
+                                 alt="最后的快枪手 The Last Gunfight (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:42:48</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">火中金 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/火中金_2025_.mp4.png" 
+                                 alt="火中金 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:41:48</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">清算 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/清算_2025_.mp4.png" 
+                                 alt="清算 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:40:38</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">铁拳硬汉 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/铁拳硬汉_2025_.mp4.png" 
+                                 alt="铁拳硬汉 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:39:37</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">雷域尖兵.mp4</td>
+                        <td>
+                            <img src="qr_codes/雷域尖兵.mp4.png" 
+                                 alt="雷域尖兵.mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:38:27</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">复仇者联盟3：无限战争国语.mp4</td>
+                        <td>
+                            <img src="qr_codes/复仇者联盟3_无限战争国语.mp4.png" 
+                                 alt="复仇者联盟3：无限战争国语.mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:37:27</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">复仇者联盟3.Avengers.Infinity.War.2018.mp4</td>
+                        <td>
+                            <img src="qr_codes/复仇者联盟3.Avengers.Infinity.War.2018.mp4.png" 
+                                 alt="复仇者联盟3.Avengers.Infinity.War.2018.mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:36:26</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">无情混蛋 Ruthless Bastards (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/无情混蛋_Ruthless_Bastards_2025_.mp4.png" 
+                                 alt="无情混蛋 Ruthless Bastards (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:35:26</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">狄仁杰之彼岸奇花 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/狄仁杰之彼岸奇花_2025_.mp4.png" 
+                                 alt="狄仁杰之彼岸奇花 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:34:26</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">怪兽岛 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/怪兽岛_2025_.mp4.png" 
+                                 alt="怪兽岛 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:33:25</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">逆途 Marco (2024).mp4</td>
+                        <td>
+                            <img src="qr_codes/逆途_Marco_2024_.mp4.png" 
+                                 alt="逆途 Marco (2024).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:32:25</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">永生战士2 Sisu Road to Revenge (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/永生战士2_Sisu_Road_to_Revenge_2025_.mp4.png" 
+                                 alt="永生战士2 Sisu Road to Revenge (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:31:25</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">拱卒 (2024).mp4</td>
+                        <td>
+                            <img src="qr_codes/拱卒_2024_.mp4.png" 
+                                 alt="拱卒 (2024).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:30:25</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">九龙挎刀去白马 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/九龙挎刀去白马_2025_.mp4.png" 
+                                 alt="九龙挎刀去白马 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:29:22</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">惊天魔盗团3.mp4</td>
+                        <td>
+                            <img src="qr_codes/惊天魔盗团3.mp4.png" 
+                                 alt="惊天魔盗团3.mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:28:22</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">巨洪 대홍수 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/巨洪_2025_.mp4.png" 
+                                 alt="巨洪 대홍수 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:27:21</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">血战到底 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/血战到底_2025_.mp4.png" 
+                                 alt="血战到底 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:24:19</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">角头：斗阵欸 角頭：鬥陣欸 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/角头_斗阵欸_角頭_鬥陣欸_2025_.mp4.png" 
+                                 alt="角头：斗阵欸 角頭：鬥陣欸 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:23:19</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">铁血战士：荒原 Predator Wastelands (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/铁血战士_荒原_Predator_Wastelands_2025_.mp4.png" 
+                                 alt="铁血战士：荒原 Predator Wastelands (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:22:19</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">阿凡达：火与烬 Avatar Fire and Ash (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/阿凡达_火与烬_Avatar_Fire_and_Ash_2025_.mp4.png" 
+                                 alt="阿凡达：火与烬 Avatar Fire and Ash (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:21:18</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">雷霆营救 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/雷霆营救_2025_.mp4.png" 
+                                 alt="雷霆营救 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:20:17</td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="video-name">无归客 (2025).mp4</td>
+                        <td>
+                            <img src="qr_codes/无归客_2025_.mp4.png" 
+                                 alt="无归客 (2025).mp4" 
+                                 class="qrcode"
+                                 loading="lazy">
+                        </td>
+                        <td class="upload-time">2026-01-10 13:19:17</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
